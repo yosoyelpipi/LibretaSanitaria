@@ -24,7 +24,7 @@ function onBackKeyDown() {
             {
                   navigator.app.exitApp();
             }
-
+/*
 function checkConnection() {
             var networkState = navigator.connection.type;
 
@@ -40,3 +40,4 @@ function checkConnection() {
 
             alert(states[networkState]);
         }
+*/
