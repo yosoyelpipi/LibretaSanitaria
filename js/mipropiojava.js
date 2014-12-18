@@ -5,6 +5,9 @@ function onBodyLoad(){
 
 function onDeviceReady(){
 	$("#resultado").html('<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span>');
+
+	//inicializa la verificación de la conexión
+	checkConnection();
     
 	//Habilita la función del botón atrás.
 	document.addEventListener("backbutton", onBackKeyDown, false);
