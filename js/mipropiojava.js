@@ -7,7 +7,7 @@ function onDeviceReady(){
 	$("#resultado").html('<span class="glyphicon glyphicon-registration-mark" aria-hidden="true"></span>');
 
 	//inicializa la verificación de la conexión
-	checkConnection();
+	//checkConnection();
     
 	//Habilita la función del botón atrás.
 	document.addEventListener("backbutton", onBackKeyDown, false);
@@ -27,7 +27,8 @@ function onBackKeyDown() {
             {
                   navigator.app.exitApp();
             }
-
+		}
+		/*
 function checkConnection() {
             var networkState = navigator.connection.type;
 
@@ -42,4 +43,4 @@ function checkConnection() {
             states[Connection.NONE]     = '¡Atención! No estás conectado a ninguna red, no podrás cargar la libreta sanitaria. Activa tu conexión WiFi o vuelve en otro momento.';
 
             alert(states[networkState]);
-        }
+        }*/
