@@ -89,6 +89,52 @@
 	}
   </style>
   
+  	<!--DATOS PERSONALES Envia datos a otra página y devuelve resultado-->
+	<script src="js/jquery-1.10.2.js"></script>	
+	
+<!--ANALIZO EL CÓDIGO ID DEL CHIPQR -->
+	<script type="text/javascript">
+	$(document).ready(function() {	
+		$('#tomail').blur(function(){
+			$('#Info').html('<p class="text-help">Verificando número de chip...</p>').fadeIn();
+			var tomail = $(this).val();		
+			var dataString = 'tomail='+tomail;
+			$.ajax({
+				type: "POST",
+				url: "http://www.mascotasvqr.com/admin/cpanel/check_qrid_app.php",
+				data: dataString,
+				success: function(data) {
+					$('#Info').fadeIn(1000).html(data);
+				}
+			});
+		});              
+	});    
+	</script>	
+
+<!-- HISTORIA CLINICA -->
+	    <script language="javascript">
+      $(document).ready(function() {
+       $().ajaxStart(function() {
+        $('#loadinglibreta').show();
+        $('#resultadohistoria').hide();
+        }).ajaxStop(function() {
+        $('#loadinglibreta').hide();
+        $('#resultadohistoria').fadeIn('slow');
+        });
+      $('#form, #fat, #historiaclinica').submit(function() {
+        $.ajax({
+            type: 'POST',
+            url: $(this).attr('action'),
+            data: $(this).serialize(),
+            success: function(data) {
+                $('#resultadohistoria').html(data);
+            }
+        })  
+        return false;
+         }); 
+        })  
+    </script>
+  
   </head>
 
   <body onload="onBodyLoad()">
@@ -173,51 +219,7 @@
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="js/ie10-viewport-bug-workaround.js"></script>
  
-	<!--DATOS PERSONALES Envia datos a otra página y devuelve resultado-->
-	<script src="js/jquery-1.10.2.js"></script>	
-	
-<!--ANALIZO EL CÓDIGO ID DEL CHIPQR -->
-	<script type="text/javascript">
-	$(document).ready(function() {	
-		$('#tomail').blur(function(){
-			$('#Info').html('<p class="text-help">Verificando número de chip...</p>').fadeIn();
-			var tomail = $(this).val();		
-			var dataString = 'tomail='+tomail;
-			$.ajax({
-				type: "POST",
-				url: "http://www.mascotasvqr.com/admin/cpanel/check_qrid_app.php",
-				data: dataString,
-				success: function(data) {
-					$('#Info').fadeIn(1000).html(data);
-				}
-			});
-		});              
-	});    
-	</script>	
 
-<!-- HISTORIA CLINICA -->
-	    <script language="javascript">
-      $(document).ready(function() {
-       $().ajaxStart(function() {
-        $('#loadinglibreta').show();
-        $('#resultadohistoria').hide();
-        }).ajaxStop(function() {
-        $('#loadinglibreta').hide();
-        $('#resultadohistoria').fadeIn('slow');
-        });
-      $('#form, #fat, #historiaclinica').submit(function() {
-        $.ajax({
-            type: 'POST',
-            url: $(this).attr('action'),
-            data: $(this).serialize(),
-            success: function(data) {
-                $('#resultadohistoria').html(data);
-            }
-        })  
-        return false;
-         }); 
-        })  
-    </script>
 	
   </body>
 </html>
